@@ -16,7 +16,7 @@ Options Available For Version 0.1:
   Using the LNK file you can drop your first-stage malware and complete your red teaming engagement successfully.
 
 ## Demo:
-<a href="https://www.instagram.com/reel/ClUDIlLofFa/?utm_source=ig_web_copy_link" target="_blank">Demo Video</a>
+<a href="https://youtu.be/gtsenuVOE38" target="_blank">Demo Video</a>
 ## Install:
 
 ```cmd
