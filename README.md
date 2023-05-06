@@ -21,7 +21,6 @@ Options Available For Version 0.1:
 
 [![ShootCutMeDemo](https://img.youtube.com/vi/gtsenuVOE38/0.jpg)](https://www.youtube.com/watch?v=gtsenuVOE38)
 
-<a href="https://youtu.be/gtsenuVOE38" target="_blank">Demo Video</a>
 
 
 ## Install:
