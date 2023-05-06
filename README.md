@@ -15,8 +15,15 @@ Options Available For Version 0.1:
 - You can choose what you want to accomplish with the LNK file: download an executable, download and load an executable, execute an executable)
   Using the LNK file you can drop your first-stage malware and complete your red teaming engagement successfully.
 
+## Photo:
+![scan](/shootcutme.png)
 ## Demo:
+
+[![ShootCutMeDemo](https://img.youtube.com/vi/gtsenuVOE38/0.jpg)](https://www.youtube.com/watch?v=gtsenuVOE38)
+
 <a href="https://youtu.be/gtsenuVOE38" target="_blank">Demo Video</a>
+
+
 ## Install:
 
 ```cmd
